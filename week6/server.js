@@ -7,7 +7,7 @@ const db = mySQL.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'fabric_store'
+    database: 'frabic_store'
 });
 
 //connect to db
@@ -71,24 +71,24 @@ app.get('/insertRow2', (req,res) => {
 
 //select query
 app.get('/getposts', (req,res) => {
-    let sql = "SELECT * FROM frabic_store";
+    let sql = "SELECT * FROM inventory";
     db.query(sql, (err, result) => {
         if(err){
             throw(err)
         }
-        res.send("Selcetion with where clause processed successfully")  //what the browser can see
+        res.send("Selcetion without where clause processed successfully")  //what the browser can see
         console.log(result) // only i can see
     })
 })
 
 //select query c were clause
 app.get('/getposts/:id', (req,res) => {
-    let sql = `SELECT * FROM frabic_store WHERE ${req.params.id}`;
+    let sql = `SELECT * FROM inventory WHERE id=${req.params.id}`;
     db.query(sql, (err, result) => {
         if(err){
             throw(err)
         }
-        res.send("Selcetion without where clause processed successfully")  //what the browser can see
+        res.send("Selcetion with where clause processed successfully")  //what the browser can see
         console.log(result) // only i can see
     })
 })
