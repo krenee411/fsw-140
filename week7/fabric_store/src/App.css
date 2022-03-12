@@ -1,0 +1,49 @@
+.App{
+    background-image: url(https://images.unsplash.com/photo-1601056639638-c53c50e13ead?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80);
+    background-repeat: no-repeat cover;
+    padding-bottom: 600px;
+    padding-top: 50px
+    
+}
+#tableForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+th, td{
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+    font-size: 20px;
+}
+th{
+    background-color: rgb(141, 127, 118);
+    color: white;
+    font-size: 25px;
+}
+td{
+    background-color: rgb(125, 141, 141);
+    font-size: 25px;
+    color:white;
+}
+#header{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+#addForm{
+    
+    color: white;
+    display:block;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: black;
+}
+lable{
+    font-size: 28px;
+    font-weight: 500; 
+}
