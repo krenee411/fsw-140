@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/api/fabric_store', async (req,res) => {
     try{
         let store = await database.fabric_store.all();
-        res.json(blogs)
+        res.json(store)
     }catch(e){
         console.log(e)
         res.sendStatus(500)

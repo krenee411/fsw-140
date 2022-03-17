@@ -34,9 +34,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 
-//select query
+//select query get all
 app.get('/api/getposts', (req,res) => {
     let sql = "SELECT * FROM inventory";
+    db.query(sql, (err, result) => {
+        if(err){
+            throw(err)
+        }
+        res.send(result)  //what the browser can see
+        console.log(result) // only i can see
+    })
+})
+//select query get one
+app.get('/api/getposts/:id', (req,res) => {
+    let sql = "SELECT * FROM inventory WHERE id= ?";
     db.query(sql, (err, result) => {
         if(err){
             throw(err)
@@ -63,9 +74,9 @@ app.post('/api/insert', (req,res) => {
 
 // //delete info from database
 app.delete('/api/delete/:id', (req,res) => {
-    const itemId = req.params.id;
-    let sql= `DELETE FROM inventory WHERE id= ?`
-    db.query(sql, itemId, (err, result) => {
+    const id = req.params.id;
+    let sql= 'DELETE FROM inventory WHERE id= ?'
+    db.query(sql, id, (err, result) => {
         if(err){
             throw(err)
         }
@@ -74,11 +85,24 @@ app.delete('/api/delete/:id', (req,res) => {
     })
 })
 
+// app.put('/api/update/:id', (req,res) => {
+//     const Id= req.body.id
+//     const amount = req.body.amount
+// let sql ="UPDATE inventory SET amount= ? WHERE id= ?"
+//     db.query(sql, [Id, amount],(err, result) => {
+//         if(err){
+//             throw(err)
+//         }else{
+//             res.send(result)
+//         }
+//     }) 
+//  })
+
 app.put('/api/update/:id', (req,res) => {
     const amount = req.body.amount;
-    const itemId= req.params.id
-    let sql= `UPDATE inventory SET amount = '?' WHERE id =${id}`
-    db.query(sql, [amount, itemId], (err, result) => {
+    const id= req.body.id
+    let sql= `UPDATE inventory SET amount = '${amount}' WHERE id =${id}`
+    db.query(sql, [amount, id], (err, result) => {
         if(err){
             throw(err)
         }

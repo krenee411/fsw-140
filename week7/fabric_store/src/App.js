@@ -16,19 +16,13 @@ const [storeState, setStoreState] = useState([])
 const [editInfo, setEditInfo]= useState(null)
 
 
-const handleEditClick = (e, storeData,id) => {
+
+const handleEditClick = (e, storeData) => {
   e.preventDefault()
   setEditInfo(storeData.id)
 } 
 
-const saveClick = (id) => {
-  axios.put(`http://localhost:9000/api/update${id}`)
-}
 
-const handleDelete = (id) => {
-  axios.delete(`http://localhost:9000/api/delete/${id}`)
-  
-}
 
 
 const submitData = () => {
@@ -40,6 +34,8 @@ const submitData = () => {
   setStoreState([...storeState, {type: type, color: color, amount: amount}])
     });
 };
+
+
 
 
  useEffect(()=> {
@@ -81,12 +77,12 @@ const submitData = () => {
             {storeState.map((storeData) => (
               <Fragment>
                 {editInfo === storeData.id ? (
-                <EditForm saveClick={saveClick}/>
+                <EditForm storeData={storeData} />
                 ):(
                 <ReadOnly 
                   storeData={storeData}
                   handleEditClick={handleEditClick}
-                  handleDelete={handleDelete}
+                  
                 />
                 )}
               </Fragment>
